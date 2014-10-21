@@ -201,7 +201,7 @@ class TaggableBehaviorTest extends CakeTestCase {
 		));
 
 		// adding a new record with the cakephp tag to increase the occurrence
-		$data = array('title' => 'Test Article', 'tags' => 'cakephp, php');
+		$data = array('title' => 'Test Article', 'tags' => 'cakephp, php', 'user_id' => 1);
 		$this->Article->create();
 		$this->Article->save($data, false);
 
@@ -492,7 +492,9 @@ class TaggableBehaviorTest extends CakeTestCase {
 		$data = array(
 			'Article' => array(
 				'id' => 'article-test-delete-tags',
+				'title' => 'Test article',
 				'tags' => 'foo, bar, test, second, third',
+				'user_id' => 1,
 			)
 		);
 		$this->Article->create();
