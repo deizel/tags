@@ -315,7 +315,7 @@ class TaggableBehaviorTest extends CakeTestCase {
 		$result = $this->Article->tagArrayToString($result['Tag']);
 		$this->assertTrue(!empty($result));
 		$this->assertInternalType('string', $result);
-		$this->assertEquals($result, 'test, bar, foo');
+		$this->assertEquals($result, 'bar, foo, test');
 
 		$result = $this->Article->tagArrayToString();
 		$this->assertTrue(empty($result));
@@ -332,7 +332,7 @@ class TaggableBehaviorTest extends CakeTestCase {
 		$result = $this->Article->tagArrayToString($result['Tag']);
 		$this->assertTrue(!empty($result));
 		$this->assertInternalType('string', $result);
-		$this->assertEquals($result, 'cakephp:bar, cakephp:foo, bar, foo');
+		$this->assertEquals($result, 'bar, cakephp:bar, cakephp:foo, foo');
 	}
 
 /**
@@ -504,7 +504,7 @@ class TaggableBehaviorTest extends CakeTestCase {
 				'id' => 'article-test-delete-tags'
 			)
 		));
-		$this->assertEquals($result['Article']['tags'], 'third, second, test, bar, foo');
+		$this->assertEquals($result['Article']['tags'], 'bar, foo, second, test, third');
 		// Removing three of the five previously added tags
 		$result['Article']['tags'] = 'third, second';
 		$this->Article->save($result, false);
@@ -522,7 +522,7 @@ class TaggableBehaviorTest extends CakeTestCase {
 				'id' => 'article-test-delete-tags'
 			)
 		));
-		$this->assertEquals($result['Article']['tags'], 'third, second');
+		$this->assertEquals($result['Article']['tags'], 'second, third');
 		// Now with deleteTagsOnEmptyField
 		$this->Article->Behaviors->load('Tags.Taggable', array(
 			'deleteTagsOnEmptyField' => true

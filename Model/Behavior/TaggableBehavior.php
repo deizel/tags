@@ -382,6 +382,7 @@ class TaggableBehavior extends ModelBehavior {
 					$tags[] = $tag['name'];
 				}
 			}
+			sort($tags);
 			return join($this->settings[$model->alias]['separator'] . ' ', $tags);
 		}
 		return '';
